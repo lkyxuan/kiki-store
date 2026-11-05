@@ -8,7 +8,7 @@
 
 | 类型 | 是什么 | 装到哪 |
 |---|---|---|
-| `theme` 外观 | 主题包：`theme.json` + `theme.css` + 图片、字体 | `~/kiki-data/themes/<id>/` |
+| `theme` 外观 / 装饰 | 主题包：`theme.json` + `theme.css` + 图片、字体。装饰（如 AI 娘立绘）叠在任何外观上，条目里加 `"kind": "decor"`，theme.json 里也写 `"kind": "decor"` | `~/kiki-data/themes/<id>/` |
 | `bao` 宝 | 一个宝：`AGENTS.md`（或 `.bao` 文件）+ `skills/` | 先显示它会做什么，确认后装成新宝 |
 
 技能、插件带代码，以后再开放。

@@ -5,12 +5,13 @@
     {
       "id": "ai-girls",
       "type": "theme",
+      "kind": "decor",
       "name": "AI 娘",
       "author": "ZipZipPipe 等",
-      "description": "总览卡片右侧换成各家 AI 娘的半身立绘（Claude、DeepSeek、GPT、Gemini 等 13 位），仅限非商业使用",
+      "description": "装饰：总览卡片右侧放各家 AI 娘的半身立绘（Claude、DeepSeek、GPT、Gemini 等 13 位），叠在浅色、深色、SAO 等任何外观上，仅限非商业使用",
       "repo": "lkyxuan/kiki-theme-ai-girls",
       "path": "ai-girls",
-      "ref": "7f94668876458b35d899687d5ac4e91ee042cc8d",
+      "ref": "524a4dcc6a1ae2c29050f49285e75f88206950de",
       "preview": "preview.png"
     },
     {

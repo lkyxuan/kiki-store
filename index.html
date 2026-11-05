@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Kiki 宝库</title>
-<meta name="description" content="Kiki 的外观和宝，点一下在 Kiki 里装上。">
+<meta name="description" content="Kiki 的外观、装饰和宝，点一下在 Kiki 里装上。">
 <style>
   :root {
     --bg: #f5f5f3; --card: #fff; --text: #1d1d1b; --muted: #6f6e69; --line: rgba(0,0,0,.09);
@@ -50,12 +50,13 @@
 <div class="wrap">
   <header>
     <h1>Kiki 宝库</h1>
-    <p>大家做的外观和宝。点「在 Kiki 里打开」，回到 Kiki 确认一下就装上。</p>
+    <p>大家做的外观、装饰和宝。点「在 Kiki 里打开」，回到 Kiki 确认一下就装上。</p>
   </header>
   <div class="bar">
     <div class="tabs" role="tablist" aria-label="分类">
       <button type="button" data-kind="all" class="on">全部</button>
       <button type="button" data-kind="theme">外观</button>
+      <button type="button" data-kind="decor">装饰</button>
       <button type="button" data-kind="bao">宝</button>
     </div>
     <input type="search" id="q" placeholder="搜名字、作者、介绍" aria-label="搜索">
@@ -74,6 +75,9 @@ const $ = (s) => document.querySelector(s);
 const esc = (s) => String(s ?? "").replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
 const enc = (p) => p.split("/").map(encodeURIComponent).join("/");
 let items = [], kind = "all";
+// 外观和装饰都是 type: "theme"（装法一样），装饰多一个 kind: "decor"；分类按这个算
+const cat = (x) => (x.type === "theme" && x.kind === "decor" ? "decor" : x.type);
+const label = { theme: "外观", decor: "装饰", bao: "宝" };
 
 function link(x) {
   const q = new URLSearchParams({ type: x.type, repo: x.repo, ref: x.ref });
@@ -86,7 +90,7 @@ const raw = (x, f) => `https://raw.githubusercontent.com/${x.repo}/${x.ref}/${en
 
 function render() {
   const q = $("#q").value.trim().toLowerCase();
-  const list = items.filter((x) => (kind === "all" || x.type === kind) && (!q || [x.name, x.author, x.description].join(" ").toLowerCase().includes(q)));
+  const list = items.filter((x) => (kind === "all" || cat(x) === kind) && (!q || [x.name, x.author, x.description].join(" ").toLowerCase().includes(q)));
   const box = $("#list");
   if (!list.length) { box.className = "empty"; box.textContent = items.length ? "没找到" : "宝库里还没有东西"; return; }
   box.className = "grid";
@@ -94,7 +98,7 @@ function render() {
     const pic = x.preview ? ` style="background-image:url('${esc(raw(x, x.preview))}')"` : "";
     const icon = x.preview ? "" : x.type === "theme" ? "🎨" : "🤖";
     return `<div class="item"><div class="pic"${pic}>${icon}</div><div class="body">
-      <b>${esc(x.name)}</b><span class="by">${x.type === "theme" ? "外观" : "宝"}${x.author ? " · " + esc(x.author) : ""}</span>
+      <b>${esc(x.name)}</b><span class="by">${label[cat(x)]}${x.author ? " · " + esc(x.author) : ""}</span>
       <span class="desc">${esc(x.description)}</span>
       <div class="acts"><a class="open" href="${esc(link(x))}">在 Kiki 里打开</a>${x.type === "bao" ? `<a href="#" data-copy="${i}">复制链接</a>` : ""}<a class="src" href="${esc(tree(x))}" target="_blank" rel="noopener">源码 ↗</a></div>
     </div></div>`;
