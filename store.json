@@ -1,0 +1,27 @@
+{
+  "kiki": "store",
+  "format": 1,
+  "items": [
+    {
+      "id": "ai-girls",
+      "type": "theme",
+      "name": "AI 娘",
+      "author": "ZipZipPipe 等",
+      "description": "总览卡片右侧换成各家 AI 娘的半身立绘（Claude、DeepSeek、GPT、Gemini 等 13 位），仅限非商业使用",
+      "repo": "lkyxuan/kiki-theme-ai-girls",
+      "path": "ai-girls",
+      "ref": "7f94668876458b35d899687d5ac4e91ee042cc8d",
+      "preview": "preview.png"
+    },
+    {
+      "id": "sao",
+      "type": "theme",
+      "name": "SAO",
+      "author": "0xmiracle",
+      "description": "亮色游戏界面风格：半透明白面板、橙色选中、圆形按钮、斜切血条",
+      "repo": "lkyxuan/kiki-theme-sao",
+      "ref": "00d42bd3c1b3c1c2a3b4da84f98931a76b0ea0cd",
+      "preview": "preview.png"
+    }
+  ]
+}
