@@ -23,6 +23,17 @@
       "repo": "lkyxuan/kiki-theme-sao",
       "ref": "00d42bd3c1b3c1c2a3b4da84f98931a76b0ea0cd",
       "preview": "preview.png"
+    },
+    {
+      "id": "banjia",
+      "type": "bao",
+      "name": "搬家宝",
+      "author": "0xmiracle",
+      "description": "把 Claude 和 Codex 的记忆、聊天、Skill、指令、连接器收进一个文件夹，写交接文档，搬到新的 AI。收家当不联网、不花 token，不带登录凭证。",
+      "repo": "lkyxuan/kiki-plugin-move",
+      "path": "搬家宝",
+      "ref": "d30cbe5a96859f68674be8ec42ed02a51d704eef",
+      "preview": "preview.png"
     }
   ]
 }
