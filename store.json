@@ -32,7 +32,7 @@
       "description": "把 Claude 和 Codex 的记忆、聊天、Skill、指令、连接器收进一个文件夹，写交接文档，搬到新的 AI。收家当不联网、不花 token，不带登录凭证。",
       "repo": "lkyxuan/kiki-plugin-move",
       "path": "搬家宝",
-      "ref": "d30cbe5a96859f68674be8ec42ed02a51d704eef",
+      "ref": "69aa02069b70ded469482d5be7acc4e828e0e299",
       "preview": "preview.png"
     }
   ]
