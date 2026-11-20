@@ -1,0 +1,44 @@
+/* Kiki 外部主题包「眼睛」：11/20 从主仓库 public/theme.css 搬出来（用户定：主仓库只留角色版 / 素版的浅色、深色）。
+   主题包只能放样式和图片，原来靠代码做的几件事（Dock 图标换 logo 和灯、贴纸外观的成员实物头像）不跟过来。 */
+/* 「眼睛」（眼睛就是界面）：品牌主题之二。黄底黑眼，热闹、有能量；眼睛做进界面里。基于浅色。
+   成员头像是黄色圆脸 + 黑竖眼（不画白脸，眼睛放大居中），Kiki 是黑圆脸 + 黄竖眼；按钮全是胶囊。Dock 图标见 main.swift brandIcon。 */
+:root[data-theme="eyes"] {
+  --wait: var(--err); --on-wait: #ffffff; /* 这套外观的“等你”还是红底白字 */
+  color-scheme: light;
+  --bg: #fffdf6; --side: #fff4d2; --grouped: #fff8e4; --card: #ffffff; --raised: #ffffff;
+  --line: rgba(110, 80, 0, .14); --line-strong: rgba(110, 80, 0, .24); --divider: rgba(110, 80, 0, .16);
+  --text: #111111; --muted: #6a5a2e; --faint: #a8996c;
+  --hover: rgba(110, 80, 0, .06); --active: rgba(255, 209, 102, .45); --fill: rgba(110, 80, 0, .08);
+  --accent: #111111; --accent-hover: #2b2b2b; --accent-soft: rgba(255, 209, 102, .5); --on-accent: #ffd166;
+  --me: #ffd166; --me-text: #111111;
+  --ok: #1f8a4c; --warn: #b25000; --err: #d70015; --switch: #111111; --note: #fff1c4; --busy: #111111; --celebrate: #f5b400;
+  --shadow-sm: 0 1px 2px rgba(110, 80, 0, .08);
+  --shadow: 0 1px 2px rgba(110, 80, 0, .06), 0 10px 26px rgba(110, 80, 0, .1);
+  --shadow-lg: 0 24px 64px rgba(80, 55, 0, .22), 0 2px 8px rgba(80, 55, 0, .1);
+  --scrim: rgba(40, 28, 0, .25);
+  --material: rgba(255, 253, 246, .85);
+}
+:root[data-theme="eyes"] .msg.user { border-radius: 20px; }
+:root[data-theme="eyes"] :is(.btn.primary, .btns .primary, .send, #brain .go, #invite .go) { border-radius: 999px; }
+:root[data-theme="eyes"] .bot-tile { fill: #ffd166; }
+:root[data-theme="eyes"] .bot-body circle, :root[data-theme="eyes"] svg:has(> .bot-body) > path { display: none; }
+:root[data-theme="eyes"] .bot-eyes { fill: #111111; }
+:root[data-theme="eyes"] .bot-happy path { stroke: #111111; }
+:root[data-theme="eyes"] .bot-gloss { display: none; }
+:root[data-theme="eyes"] .bot-face { transform: translate(16px, 16.5px) scale(1.9) translate(-18.8px, -13.7px); }
+:root[data-theme="eyes"] .qiqi-face { transform: translate(16px, 16.5px) scale(1.9) translate(-17.9px, -14.7px); }
+:root[data-theme="eyes"] svg:has(.qiqi-face) .bot-tile { fill: #111111; }
+:root[data-theme="eyes"] .qiqi-face .bot-eyes { fill: #ffd166; }
+:root[data-theme="eyes"] .qiqi-face .bot-happy path { stroke: #ffd166; }
+:root[data-theme="eyes"] .avatar.bot svg { clip-path: circle(50%); } /* 圆脸：跟着头像一起摇 */
+:root[data-theme="eyes"] .qiqi-ava > rect { fill: #111111; }
+:root[data-theme="eyes"] .qiqi-ava > circle, :root[data-theme="eyes"] .qiqi-ava > path { display: none; }
+:root[data-theme="eyes"] .qiqi-ava .qe { fill: #ffd166; }
+:root[data-theme="eyes"] .kiki .ava { border-radius: 50%; }
+:root[data-theme="eyes"] .kiki.on .ava { box-shadow: 0 0 0 3px var(--side), 0 0 0 6px #111111; }
+:root[data-theme="eyes"] .kiki .ava.busy { animation: eyes-look 1.3s ease-in-out infinite; }
+@keyframes eyes-look { 0%, 100% { transform: translateX(-3px); } 50% { transform: translateX(3px) translateY(-3px); } }
+:root[data-theme="eyes"] img[src="/icon.svg"] { content: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='50' fill='%23111'/%3E%3Crect x='41' y='28' width='10' height='27' rx='5' fill='%23ffd166'/%3E%3Crect x='58' y='28' width='10' height='27' rx='5' fill='%23ffd166'/%3E%3C/svg%3E"); border-radius: 50%; }
+:root[data-theme="eyes"] ::selection { background: rgba(255, 209, 102, .7); }
+@media (prefers-reduced-motion: reduce) { :root[data-theme="eyes"] .kiki .ava.busy { animation: none; } }
+
