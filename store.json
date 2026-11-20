@@ -25,6 +25,39 @@
       "preview": "preview.png"
     },
     {
+      "id": "tower",
+      "type": "theme",
+      "name": "指挥塔",
+      "author": "0xmiracle",
+      "description": "纯黑底、白色竖眼、黄灯：成员头像是一盏灯（以前是 Kiki 内置外观）",
+      "repo": "lkyxuan/kiki-store",
+      "path": "themes/tower",
+      "ref": "336687772b65ac4b0aa7120a4dbe89d581a0c0b0",
+      "preview": "preview.png"
+    },
+    {
+      "id": "eyes",
+      "type": "theme",
+      "name": "眼睛",
+      "author": "0xmiracle",
+      "description": "全黄底、黑字、胶囊按钮：成员头像是黄底黑眼的圆脸（以前是 Kiki 内置外观）",
+      "repo": "lkyxuan/kiki-store",
+      "path": "themes/eyes",
+      "ref": "336687772b65ac4b0aa7120a4dbe89d581a0c0b0",
+      "preview": "preview.png"
+    },
+    {
+      "id": "sticker",
+      "type": "theme",
+      "name": "贴纸",
+      "author": "0xmiracle",
+      "description": "白底、粗黑描边、错位硬阴影、黄色顶栏，像贴纸本（以前是 Kiki 内置外观）",
+      "repo": "lkyxuan/kiki-store",
+      "path": "themes/sticker",
+      "ref": "336687772b65ac4b0aa7120a4dbe89d581a0c0b0",
+      "preview": "preview.png"
+    },
+    {
       "id": "banjia",
       "type": "bao",
       "name": "搬家宝",
