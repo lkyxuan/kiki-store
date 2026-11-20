@@ -1,0 +1,60 @@
+/* Kiki 外部主题包「指挥塔」：11/20 从主仓库 public/theme.css 搬出来（用户定：主仓库只留角色版 / 素版的浅色、深色）。
+   主题包只能放样式和图片，原来靠代码做的几件事（Dock 图标换 logo 和灯、贴纸外观的成员实物头像）不跟过来。 */
+/* 「指挥塔」：品牌主题（11/9 用户定的四大主题之一，原型 kiki-logo/v3-竖眼品牌）。你是总经理，底下灯火通明。
+   纯黑底、白色竖眼、黄色的灯：每位成员是一盏灯，在干活就亮。基于深色（原生标题栏按深色走）。
+   logo 和成员头像不画白圆脸、不带星星，只剩一双竖眼；Kiki（logo）下面多一排四盏灯。Dock 图标由 Mac 外壳按同一套画（main.swift brandIcon）。 */
+:root[data-theme="tower"] {
+  --wait: var(--err); --on-wait: #ffffff; /* 这套外观的“等你”还是红底白字 */
+  color-scheme: dark;
+  --bg: #000000; --side: #0b0b0c; --grouped: #000000; --card: #0f0f10; --raised: #121214;
+  --line: rgba(255, 255, 255, .1); --line-strong: rgba(255, 255, 255, .16); --divider: rgba(255, 255, 255, .1);
+  --text: #f2f2f2; --muted: #9a9a9a; --faint: #5e5e62;
+  --hover: rgba(255, 255, 255, .06); --active: rgba(255, 255, 255, .1); --fill: rgba(118, 118, 128, .2);
+  --accent: #ffd166; --accent-hover: #ffdb85; --accent-soft: rgba(255, 209, 102, .16); --on-accent: #241a00;
+  --me: #f2f2f2; --me-text: #000000;
+  --ok: #30d158; --warn: #ffb340; --err: #ff6961; --switch: #ffd166; --note: #1f1a0c; --busy: #ffd166; --celebrate: #ffd166;
+  --lamp: #ffd166; --lamp-off: #3a3a3c;
+  --shadow-sm: 0 0 0 1px rgba(255, 255, 255, .06);
+  --shadow: 0 0 0 1px rgba(255, 255, 255, .07), 0 6px 20px rgba(0, 0, 0, .4);
+  --shadow-lg: 0 24px 64px rgba(0, 0, 0, .6), 0 0 0 1px rgba(255, 255, 255, .1);
+  --scrim: rgba(0, 0, 0, .55);
+  --material: rgba(0, 0, 0, .82);
+}
+/* 角更方一点、字更紧，像控制台 */
+:root[data-theme="tower"] .msg.user { border-radius: 10px; }
+:root[data-theme="tower"] :is(.btn.primary, .btns .primary, .send):not(:disabled) { color: var(--on-accent); }
+/* 成员头像 = 一盏灯：深灰方底 + 白色竖眼，不画白圆脸；Kiki 的星星也收掉 */
+:root[data-theme="tower"] .bot-tile { fill: #1a1a1c; }
+:root[data-theme="tower"] .bot-body circle, :root[data-theme="tower"] svg:has(> .bot-body) > path { display: none; }
+:root[data-theme="tower"] .bot-eyes { fill: #ffffff; }
+/* 没了白圆脸，眼睛整组放大、挪到正中，小头像里也看得清（.bot-face 包着眼睛和笑眼，眼睛自己的眨眼、左右看照旧） */
+:root[data-theme="tower"] .bot-face { transform: translate(16px, 16.5px) scale(1.9) translate(-18.8px, -13.7px); }
+:root[data-theme="tower"] .qiqi-face { transform: translate(16px, 16.5px) scale(1.9) translate(-17.9px, -14.7px); }
+/* 页面里直接放 Kiki logo 图片的地方（标题栏、总览卡片等）换成指挥塔的 logo：白方底、黑竖眼、一排灯 */
+:root[data-theme="tower"] img[src="/icon.svg"] { content: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='22.3' fill='%23f2f2f2'/%3E%3Crect x='39' y='26' width='9' height='22' rx='4.5'/%3E%3Crect x='54' y='26' width='9' height='22' rx='4.5'/%3E%3Cg%3E%3Ccircle cx='29' cy='70' r='5'/%3E%3Ccircle cx='43' cy='70' r='5'/%3E%3Ccircle cx='57' cy='70' r='5' opacity='.25'/%3E%3Ccircle cx='71' cy='70' r='5' opacity='.25'/%3E%3C/g%3E%3C/svg%3E"); }
+:root[data-theme="tower"] .bot-happy path { stroke: #ffffff; }
+:root[data-theme="tower"] .bot-gloss { display: none; }
+/* 左栏这些有状态的头像右下角挂一盏灯：平时灭着，在干活亮黄、一闪一闪，做完了你还没看就常亮 */
+:root[data-theme="tower"] .avatar.bot:is(.bot-idle, .bot-work, .bot-done) { position: relative; overflow: visible; }
+:root[data-theme="tower"] .avatar.bot:is(.bot-idle, .bot-work, .bot-done)::after {
+  content: ""; position: absolute; right: -2px; bottom: -2px; width: 28%; height: 28%; min-width: 7px; min-height: 7px; border-radius: 50%;
+  background: var(--lamp-off); box-shadow: 0 0 0 2px var(--side);
+}
+:root[data-theme="tower"] .avatar.bot.bot-work::after { background: var(--lamp); animation: tower-lamp 1.6s ease-in-out infinite; }
+:root[data-theme="tower"] .avatar.bot.bot-done::after { background: var(--lamp); }
+@keyframes tower-lamp { 0%, 100% { opacity: .35; box-shadow: 0 0 0 2px var(--side); } 50% { opacity: 1; box-shadow: 0 0 0 2px var(--side), 0 0 8px var(--lamp); } }
+/* Kiki（logo）：白方底 + 黑竖眼，下面一排四盏灯；有成员在干活时四盏灯一起亮、一呼一吸 */
+:root[data-theme="tower"] .qiqi-ava > rect { fill: #f2f2f2; }
+:root[data-theme="tower"] .qiqi-ava > circle, :root[data-theme="tower"] .qiqi-ava > path { display: none; }
+:root[data-theme="tower"] .qiqi-ava .qe { fill: #000000; }
+:root[data-theme="tower"] .kiki .ava { position: relative; }
+:root[data-theme="tower"] .kiki .ava::after {
+  content: ""; position: absolute; left: 22%; right: 22%; bottom: 17%; height: 11%;
+  background: radial-gradient(circle closest-side, #000 92%, transparent) 0 0 / 25% 100% repeat-x; opacity: .25;
+}
+:root[data-theme="tower"] .kiki .ava.busy::after { opacity: 1; animation: tower-board 1.4s ease-in-out infinite; }
+@keyframes tower-board { 0%, 100% { opacity: .45; } 50% { opacity: 1; } }
+:root[data-theme="tower"] .kiki.on .ava { box-shadow: 0 0 0 2px #000, 0 0 0 4px var(--lamp); }
+:root[data-theme="tower"] ::selection { background: rgba(255, 209, 102, .35); }
+@media (prefers-reduced-motion: reduce) { :root[data-theme="tower"] :is(.avatar.bot.bot-work, .kiki .ava.busy)::after { animation: none; } }
+
